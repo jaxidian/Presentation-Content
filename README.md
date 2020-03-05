@@ -8,7 +8,7 @@ This repo is a new work-in-progress project of mine to accumulate, aggregate, or
 
 ## Licensing
 
-This monorepo has no master license. This means that if no license is presented with a particular item in this repo, then you are unauthorized to use it in any way and are not licensed to modify or redistribute it unless you have otherwise negotiated a license with me. I do license myself, Shane Milton, to use the contents of this Repo and to use the contents of any changes that have gone or will go into this Repo.
+This monorepo has no master license. This means that if no license is presented with a particular item in this repo, then you are unauthorized to use it in any way and are not licensed to modify or redistribute it unless you have otherwise negotiated a license with me. I license myself, Shane Milton, to use the contents of this Repo and to use the contents of any changes that have gone or will go into this Repo.
 
 If you see something that is improperly licensed (such as a required license file missing for a GPL particular component, for instance), please create an issue to let me know, and I'll get it corrected ASAP! I don't intend to omit or misidentify licenses. Still, accidental omissions may happen as I move some of these things into a public repo that I had otherwise never shared publicly. And if it is your work that I have improperly licensed, I offer my sincere apologies in advance. Please post an Issue, and I'll fix it ASAP!
 
