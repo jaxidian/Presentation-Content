@@ -9,18 +9,30 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo Getting Started...
-  displayName: 'Intro text'
+jobs:
+  - job: One
+    steps:
+      - script: |
+          echo Getting started...
+          echo For now, we are just compiling the package.
+          echo 'Later, we will overload this for naive CI/CD implementation (one master script) just to get things going...'
+        displayName: 'Intro text'
+  - job: Two
+    steps:
+      - script: echo First, build the project.
+        displayName: 'Build'
+
+
+#- script: echo Single Line...
 
 #- script: |
 #    echo Add other tasks to build, test, and deploy your project.
 #    echo See https://aka.ms/yaml
 #  displayName: 'Run a multi-line script'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: 'MyKbFunctions/MyKbFunctions.csproj'
-    arguments: '/property:GenerateFullPaths=true /consoleloggerparameters:NoSummary'
-    workingDirectory: '/Presentations/20200326 (Indy Cloud Conf) Cloud First Web Apps in Azure/src/MyKb/'
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'build'
+#     projects: '/Presentations/20200326 (Indy Cloud Conf) Cloud First Web Apps in Azure/src/MyKb/MyKbFunctions/MyKbFunctions.csproj'
+#     arguments: '/property:GenerateFullPaths=true /consoleloggerparameters:NoSummary'
+#     workingDirectory: '/Presentations/20200326 (Indy Cloud Conf) Cloud First Web Apps in Azure/src/MyKb/'
