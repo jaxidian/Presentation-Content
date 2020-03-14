@@ -9,9 +9,21 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo Getting Started...
-  displayName: 'Intro text'
+jobs:
+  - job: One
+    steps:
+      - script: |
+          echo Getting started...
+          echo For now, we're just compiling the package.
+          echo Later, we'll overload this for a poor man's CI/CD implementation just to get things going...
+        displayName: 'Intro text'
+  - job: Two
+    steps:
+      - script: echo First, let's build the project.
+        displayName: 'Build'
+
+
+#- script: echo Single Line...
 
 #- script: |
 #    echo Add other tasks to build, test, and deploy your project.
