@@ -19,7 +19,7 @@ jobs:
         displayName: 'Intro text'
   - job: Two
     steps:
-      - script: echo First, let's build the project.
+      - script: echo First, build the project.
         displayName: 'Build'
 
 
