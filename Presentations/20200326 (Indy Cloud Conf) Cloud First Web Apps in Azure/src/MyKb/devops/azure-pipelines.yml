@@ -15,7 +15,7 @@ jobs:
       - script: |
           echo Getting started...
           echo For now, we are just compiling the package.
-          echo Later, we will overload this for naive CI/CD implementation (one master script) just to get things going...
+          echo 'Later, we will overload this for naive CI/CD implementation (one master script) just to get things going...'
         displayName: 'Intro text'
   - job: Two
     steps:
