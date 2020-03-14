@@ -4,7 +4,7 @@
 #    appName: <Name of the Function App>
 
 trigger:
-- master
+- Dev
 
 pool:
   vmImage: 'ubuntu-latest'
