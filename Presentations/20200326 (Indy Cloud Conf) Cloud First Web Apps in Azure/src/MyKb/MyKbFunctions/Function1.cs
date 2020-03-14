@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace MyKb
+namespace MyKbFunctions
 {
     public static class Function1
     {
