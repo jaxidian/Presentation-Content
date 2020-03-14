@@ -21,6 +21,6 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: 'MyKbFunctions/MyKbFunctions.csproj'
+    projects: '/Presentations/20200326 (Indy Cloud Conf) Cloud First Web Apps in Azure/src/MyKb/MyKbFunctions/MyKbFunctions.csproj'
     arguments: '/property:GenerateFullPaths=true /consoleloggerparameters:NoSummary'
     workingDirectory: '/Presentations/20200326 (Indy Cloud Conf) Cloud First Web Apps in Azure/src/MyKb/'
