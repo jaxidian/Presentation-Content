@@ -7,10 +7,10 @@ trigger:
   - Dev
   
 variables:
-  # Variable Configuration (make sure you configure these in your CI/CD environment!):
-  # azureSubscription: 'guid goes here'
-  # functionAppName: 'App name'
-  # resourceGroupName: 'Resource Group Name'
+  # Environment Variable Configuration (make sure you configure these in your CI/CD environment!):
+  #   1) azureSubscription: 'guid goes here'
+  #   2) functionAppName: 'App name'
+  #   3) resourceGroupName: 'Resource Group Name'
 
   # Agent VM image name
   vmImageName: 'windows-latest'
