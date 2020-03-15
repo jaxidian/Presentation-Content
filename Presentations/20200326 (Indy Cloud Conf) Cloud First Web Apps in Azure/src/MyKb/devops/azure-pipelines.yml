@@ -1,38 +1,78 @@
-#variables: 
-#    ## Add this under variables section in the pipeline
-#    azureSubscription: <Name of the Azure subscription>
-#    appName: <Name of the Function App>
+# .NET Core Function App to Windows on Azure
+# Build a .NET Core function app and deploy it to Azure as a Windows function App.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-- Dev
+  - Dev
+  
+variables:
+  # Environment Variable Configuration (make sure you configure these in your CI/CD environment!):
+  #   1) azureSubscription: 'guid goes here'
+  #   2) functionAppName: 'App name'
+  #   3) resourceGroupName: 'Resource Group Name'
 
-pool:
-  vmImage: 'ubuntu-latest'
+  # Agent VM image name
+  vmImageName: 'windows-latest'
 
-jobs:
-  - job: One
+  # Working Directory
+  workingDirectory: '$(System.DefaultWorkingDirectory)/Presentations/20200326 (Indy Cloud Conf) Cloud First Web Apps in Azure/src/MyKb/MyKbFunctions'
+
+stages:
+- stage: Build
+  displayName: Build stage
+
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: $(vmImageName)
+
     steps:
-      - script: |
-          echo Getting started...
-          echo For now, we are just compiling the package.
-          echo 'Later, we will overload this for naive CI/CD implementation (one master script) just to get things going...'
-        displayName: 'Intro text'
-  - job: Two
-    steps:
-      - script: echo First, build the project.
-        displayName: 'Build'
+    - task: DotNetCoreCLI@2
+      displayName: Build
+      inputs:
+        command: 'build'
+        projects: |
+          $(workingDirectory)/MyKbFunctions.csproj
+        arguments: --output $(System.DefaultWorkingDirectory)/publish_output --configuration Release
 
+    - task: ArchiveFiles@2
+      displayName: 'Archive files'
+      inputs:
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/publish_output'
+        includeRootFolder: false
+        archiveType: zip
+        archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+        replaceExistingArchive: true
 
-#- script: echo Single Line...
+    - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+      artifact: drop
 
-#- script: |
-#    echo Add other tasks to build, test, and deploy your project.
-#    echo See https://aka.ms/yaml
-#  displayName: 'Run a multi-line script'
+- stage: Deploy
+  displayName: Deploy stage
+  dependsOn: Build
+  condition: succeeded()
 
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     command: 'build'
-#     projects: '/Presentations/20200326 (Indy Cloud Conf) Cloud First Web Apps in Azure/src/MyKb/MyKbFunctions/MyKbFunctions.csproj'
-#     arguments: '/property:GenerateFullPaths=true /consoleloggerparameters:NoSummary'
-#     workingDirectory: '/Presentations/20200326 (Indy Cloud Conf) Cloud First Web Apps in Azure/src/MyKb/'
+  jobs:
+  - deployment: Deploy
+    displayName: Deploy
+    environment: 'development'
+    pool:
+      vmImage: $(vmImageName)
+
+    strategy:
+      runOnce:
+        deploy:
+
+          steps:
+          - task: AzureFunctionApp@1
+            displayName: 'Azure functions app deploy'
+            inputs:
+              azureSubscription: '$(azureSubscription)'
+              appType: functionApp
+              appName: $(functionAppName)
+              package: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
+              deployToSlotOrASE: true
+              resourceGroupName: '$(resourceGroupName)'
+              slotName: Dev
