@@ -2,17 +2,19 @@
 
 *This talk will be given at the 2020 Indy Cloud Conf conference, currently scheduled on March 26, 2020, at 1:30pm. This date and time may still change.*
 
-## Planning
+## Summary
 
-For now, this readme is where I'm documenting the presentation outline. This will change as this content goes into the presentation and this readme will become an information page for the talk.
+This presentation is intended to be a bit of an "Intro to Azure" conversation. The audience is expected to consist of two types of technologists:
 
-## Outline
+1. Familiar with AWS but new to Azure.
+2. New to Cloud development in general, including Azure.
 
-1. Assuming the audience is new to Azure, and potentially new to some cloud topics.
-2. Don't want to spend too much time in "intro to cloud" topics because time is very limited. But can't avoid it with the audience. Also, I need to touch on "Why Cloud," unfortunately.
-3. Talk about the IaaS/PaaS spectrum.
-4. Show some Azure technologies and where they fit on the spectrum.
-5. Present a workflow of "What services do I use in Azure?" with examples.
-    - For instance, Lift & Shift of an IIS app -> (preferable) App Services, (possible) Cloud Services.
-    - This might be somewhat similar to this page: <https://azure.microsoft.com/en-us/solutions/serverless/>
-6. Walk a specific flow through the above workflow and let it lead into a demo
+Because of this, this talk will focus on some Intro to Cloud and Intro to Azure topics before getting into Cloud-First design practices and considerations when designing for the cloud.
+
+## Resources
+
+The only thing used for this presentation is a Powerpoint slide deck. This may evolve to show some services running in Azure via the Azure Portal, but that is out of scope for the talk for now.
+
+### Demos
+
+There are no code demos in this talk. Given the short duration of the presentation window, time did not allow for code demos without seriously cutting the amount of useful information being discussed.
