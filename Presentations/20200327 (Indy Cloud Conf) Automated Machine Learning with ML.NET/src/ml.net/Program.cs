@@ -18,7 +18,7 @@ namespace ml.net
             uint trainingDurationInSeconds = 60;
             if (args != null && args.Length > 0 && uint.TryParse(args[0], out trainingDurationInSeconds))
             {
-                //trainingDurationInSeconds = (uint)Math.Max(trainingDurationInSeconds, 30);
+                trainingDurationInSeconds = (uint)Math.Max(trainingDurationInSeconds, 30);
                 Console.WriteLine($"Overriding training time, setting for {trainingDurationInSeconds} seconds.");
             }
 
